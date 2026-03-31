@@ -7,7 +7,7 @@ public class SmartLight extends Drive {
             super("小米电灯");
             Brightness=10;
             Color="white";
-            this.showstatus();
+
     }
     public void ChangeColor(String color){
         Color=color;

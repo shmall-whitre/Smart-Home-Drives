@@ -26,7 +26,6 @@ public class SmartAirConditioner extends Drive{
       else if (Mode.equals("制热")) {
           this.Temperature=27;
       }
-
     }
     @Override
     public void showstatus()

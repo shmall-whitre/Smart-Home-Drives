@@ -1,6 +1,8 @@
 package com.Starts;
 
 import com.drive.SmartAirConditioner;
+import com.drive.SmartLight;
+
 import java.util.Scanner;
 
 public class StartWorkthing {
@@ -11,7 +13,7 @@ public class StartWorkthing {
         SmartAirConditioner c = new SmartAirConditioner();
         if(!c.Status)
         {
-            System.out.println("请先开机(输入1开机)");
+            System.out.println("还未开机，请先开机(输入1开机)");
             turnonnum=sc.nextInt();
             if(turnonnum==1){
                 c.TurnOn();
@@ -54,12 +56,16 @@ public class StartWorkthing {
             case 3 -> {
                 if(c.Status) {
                     System.out.println("确定关机（yes or no）");
+
                     String que= sc.next();
                     if(que.equals("yes")){
                         c.TurnOff();
                     }
                     else if(que.equals("no")){
                         break;
+                    }
+                    else {
+                        System.out.println("输入错误");
                     }
 
                 }
@@ -74,6 +80,82 @@ public class StartWorkthing {
 
     void StartSmartLight() {
         MUNE a = new MUNE();
+        int turnonnum;
+
         Scanner sc = new Scanner(System.in);
+        SmartLight light=new SmartLight();
+        if(!light.Status){
+            System.out.println("还未开机请先开机（按1开机）");
+            turnonnum=sc.nextInt();
+            if(turnonnum==1){
+                light.TurnOn();
+            }
+            else {
+                System.out.println("Error!");
+                return;
+            }
+        }
+        a.Light();
+        int number=sc.nextInt();
+        switch(number){
+            case 1->{
+                System.out.println("输入你要改变的灯光颜色");
+                String color=sc.next();
+                light.ChangeColor(color);
+
+            }
+            case 2->{
+                System.out.println("调节灯光的强度（最低0最高100）");
+                int bightness=sc.nextInt();
+                light.ChangeBrightness(bightness);
+
+            }
+            case 3->{
+                if(light.Status) {
+                    System.out.println("确定关机（yes or no）");
+                    String que= sc.next();
+                    if(que.equals("yes")){
+                        light.TurnOff();
+                    }
+                    else if(que.equals("no")){
+                        break;
+                    }
+                    else{
+                        System.out.println("输入错误！");
+                    }
+
+                }
+                else{
+                    light.TurnOn();
+
+                }
+            }
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }
